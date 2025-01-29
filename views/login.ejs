@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <label for="Mail">First Name</label>
+        <input type="mail" name="mail" id="" placeholder="">
+
+        <label for="Password">First Name</label>
+        <input type="password" name="password" id="">
+        <button>Login</button>
+    </form>
+
+    <% if(!ismember){ %>
+        <p style="color: red; font-weight: bold;">Email or Password is not correct</p>
+    <% } %>
+    <form action="/signup" method="get">
+        <button>Signup</button>
+    </form>
+</body>
+</html>

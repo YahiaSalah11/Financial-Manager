@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 id="balance">Current Balance: <%=balance%></h1>
+    <h1>Add Income Here</h1>
+    <form action="/addIncome" method="post">
+        <input type="number" name="Income" id="Income" placeholder="Income">
+        <button type="submit">Add Income</button>
+    </form>
+
+
+
+    <form action="/options" method="get">
+        <button type="submit">Back</button>
+    </form>
+
+</body>
+</html>

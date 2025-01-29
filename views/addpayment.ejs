@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Man Page</title>
+</head>
+<body>
+        <form id="Back" action="/options" method="get">
+            <button  type="submit">Back</button>
+        </form>
+
+        <h1 id="balance">Current Balance: <%=balance%></h1>
+        <h1>Add Payment</h1>
+
+
+
+        <form action="/addPayment" method="post">
+            <input type="number" name="AmountSpent" id="" placeholder="Amount Spent in LE...">
+            <input type="date" name="Date" id="" placeholder="Date..">
+            <select name="Categories" id="Categories" >
+                <option value="Food">Food</option>
+                <option value="Cafe">Cafe</option>
+                <option value="SuperMarket">Super Market</option>
+                <option value="Gas">Gas</option>
+                <option value="Shoping">Shoping</option>
+                <option value="Bills">Bills</option>
+                <option value="Gift">Gift</option>
+            </select>
+            
+            <button type="submit">Add The Payment</button>
+
+        </form>
+
+        <form action="/showPayments" method="post">
+            <button type="submit">Show All Payments</button>
+        </form>
+
+        <table>
+            <tr>
+                <th>Amount Spent</th>
+                <th>Date of Spent</th>
+                <th>Category</th>
+            </tr>
+            <% for(let i=0; i<Payments.length; i++){%>
+                <tr>
+                    <td><%=Payments[i].amount%></td>
+                    <td><%=Payments[i].date%></td>
+                    <td><%=Payments[i].category%></td>
+                </tr>
+            <% } %>
+            
+        </table>
+
+       
+
+
+        
+
+
+        
+
+    
+</body>
+</html>

@@ -1,0 +1,149 @@
+/* General Styles */
+
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #c4354d 50%, #202120 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+}
+
+h1, h2, h3 {
+    color: #a81313;
+    padding: 10px 10px ;
+    text-align: center;
+    border-color: #aa0303;
+    border-radius: 5px;
+    border: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+
+  text-align: center;
+}
+
+
+
+
+form#Back button {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    min-height: 20px;
+    width: 100px;
+    border-radius: 20%;
+    border-color: transparent;
+    background-color: #030205;
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 6px;
+    border-width: 0;
+
+}
+
+
+
+
+button {
+    min-height: 40px;
+    width: 350px;
+    border-radius: 20%;
+    border-color: transparent;
+    background-color: #5a3890;
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 6px;
+    border-width: 0;
+  }
+
+button:hover {
+  background-color: #4e1bb52c;
+}
+
+
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #3a1b42;
+    padding: 120px;
+    border-radius: 8px;
+    box-shadow: 10 4px 8px rgba(54, 33, 33, 0.1);
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="number"],
+input[type="date"],
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px 0;
+  }
+  .chart-container {
+    margin: 20px 0;
+    width: 90%;
+    max-width: 600px;
+  }
+
+
+
+/* Special Elements */
+#balance {
+    font-size: 1.5em;
+    color: #16a085;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #ecf0f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}

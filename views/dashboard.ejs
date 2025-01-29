@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: auto;
+    }
+    .chart-container {
+      margin: 20px 0;
+      width: 90%;
+      max-width: 600px;
+    }
+    #back button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #back button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <form id="back" action="/options" method="get">
+    <button type="submit">Back</button>
+  </form>
+
+  <div class="container">
+    <h1>Dashboard</h1>
+    <h2>Current Balance: $<%= balance.toFixed(2) %></h2>
+
+    <h3>Last 5 Payments</h3>
+    <ul>
+      <% payments.forEach(payment => { %>
+        <li>
+          <strong>Category:</strong> <%= payment.category || 'Unknown' %> |
+          <strong>Amount:</strong> $<%= payment.amount || 0 %> |
+          <strong>Date:</strong> <%= payment.date || 'N/A' %>
+        </li>
+      <% }); %>
+    </ul>
+
+    <div class="chart-container">
+      <h3>Balance Over Time</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h3>Spending by Category</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const barChartData = <%- JSON.stringify(barChartData) %>;
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: barChartData.map(entry => entry.x),
+        datasets: [{
+          label: 'Amount Spent ($)',
+          data: barChartData.map(entry => entry.y),
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: 'Date' } },
+          y: { title: { display: true, text: 'Amount Spent ($)' }, beginAtZero: true }
+        }
+      }
+    });
+
+    const pieChartData = <%- JSON.stringify(pieChartData) %>;
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: pieChartData.labels,
+        datasets: [{
+          data: pieChartData.values,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)',
+            'rgba(201, 203, 207, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)',
+            'rgba(201, 203, 207, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'top' } }
+      }
+    });
+  </script>
+</body>
+</html>
